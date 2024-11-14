@@ -1,5 +1,21 @@
 ---
+import { client } from "../lib/sanity";
 
+interface tour {
+	title: string;
+	slug: string;
+	description: string;
+	mainImage: string;
+};
+
+const tours = await client.fetch(`
+	*[_type == "tour"] {
+		title,
+		slug,
+		description,
+		mainImage
+	}
+`);
 ---
 
 <html lang="en">
@@ -8,9 +24,18 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Ecuador Local Guide</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>Welcome to Ecuador Local Guide</h1>
+
+		<div class="tours">
+			{tours.map((tour: tour) => (
+				<div class="tour-card">
+					<h2>{tour.title}</h2>
+					<p>{tour.description}</p>
+				</div>
+			))}
+		</div>
 	</body>
 </html>

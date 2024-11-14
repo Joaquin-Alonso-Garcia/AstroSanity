@@ -10,8 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.12",
     "@astrojs/check": "^0.9.4",
+    "@sanity/client": "^6.22.4",
+    "@sanity/image-url": "^1.1.0",
+    "astro": "^4.16.12",
+    "groq": "^3.64.1",
     "typescript": "^5.6.3"
   }
 }
